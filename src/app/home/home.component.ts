@@ -29,9 +29,7 @@ export class HomeComponent implements OnInit {
 
 
   markAllAsNotCompleted(): void {
-    for (const todo of this.todos) {
-      todo.isCompleted = true;
-    }
+    this.todos = this.todos.map(todo => ({title: todo.title, isCompleted: true}));
   }
 
   constructor() { }
@@ -42,5 +40,6 @@ export class HomeComponent implements OnInit {
 
   handleStateChange(todo: Todo): void {
     todo.isCompleted = !todo.isCompleted;
+ 
   }
 }
