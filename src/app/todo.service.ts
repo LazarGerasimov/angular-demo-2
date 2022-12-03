@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 
 import { Todo } from './todo-item/todo-item.component';
@@ -7,24 +8,19 @@ import { Todo } from './todo-item/todo-item.component';
 })
 export class TodoService {
 
-  constructor(private injector: Injector) {
+  private cache!: Todo[];
+
+  constructor(private injector: Injector, private httpClient: HttpClient) {
   }
 
   getTodos(): Promise<Todo[]> {
-    return Promise.resolve([
-      {
-        title: 'Todo 1', isCompleted: false
-      },
-      {
-        title: 'Todo 2', isCompleted: true
-      },
-      {
-        title: 'Todo 3', isCompleted: false
-      },
-      {
-        title: 'Todo 4', isCompleted: true
-      },
-  
-    ]);
+
+    if (!this.cache) {
+      this.httpClient.get<Todo[]>('https://jsonplaceholder.typicode.com/todos/1').subscribe((todos) => {
+        this.cache = todos;
+      })
+    }
+
+    return Promise.resolve(this.cache);
   }
 }
