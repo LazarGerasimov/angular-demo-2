@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+
 
 export interface Todo {
   title: string;
@@ -13,6 +14,7 @@ export interface Todo {
 export class TodoItemComponent implements OnInit {
 
   @Input() todo!: Todo;
+  @Output() completeStateChange: EventEmitter<string> = new EventEmitter();
 
   constructor() {}
   
@@ -21,6 +23,8 @@ export class TodoItemComponent implements OnInit {
   }
 
   handleCompleteStateChange(todoToChange: Todo): void {
-    todoToChange.isCompleted = !todoToChange.isCompleted;
+    //todoToChange.isCompleted = !todoToChange.isCompleted;
+
+    this.completeStateChange.emit(todoToChange.title);
   }
 }

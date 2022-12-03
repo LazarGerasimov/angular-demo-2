@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
     {
       title: 'Todo 4', isCompleted: true
     },
-    
+
   ];
 
-  
+
 
   markAllAsNotCompleted(): void {
     for (const todo of this.todos) {
@@ -38,5 +38,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  handleStateChange(title: string): void {
+    console.log(title) 
   }
 }
