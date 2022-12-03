@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  handleStateChange(title: string): void {
-    console.log(title) 
+  handleStateChange(todo: Todo): void {
+    todo.isCompleted = !todo.isCompleted;
   }
 }
