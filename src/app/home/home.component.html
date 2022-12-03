@@ -1,8 +1,8 @@
 
 <button (click)="markAllAsNotCompleted()">Mark All As Not Completed</button>
 
-<div *ngFor="let todo of todos">
-    <app-todo-item >
+<div *ngFor="let todoItem of todos">
+    <app-todo-item [todo]="todoItem">
 
     </app-todo-item>
     
