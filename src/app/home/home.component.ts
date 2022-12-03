@@ -26,7 +26,11 @@ export class HomeComponent implements OnInit {
       title: 'Todo 4', isCompleted: true
     },
     
-  ]
+  ];
+
+  handleCompleteStateChange(todoToChange: Todo): void {
+    todoToChange.isCompleted = !todoToChange.isCompleted;
+  }
 
   constructor() { }
 
