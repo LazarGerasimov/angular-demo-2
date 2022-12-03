@@ -1,45 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Todo } from '../todo-item/todo-item.component';
+import { TodoService } from '../todo.service';
 
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  providers: [TodoService]
 })
 export class HomeComponent implements OnInit {
 
-  todos: Todo[] = [
-    {
-      title: 'Todo 1', isCompleted: false
-    },
-    {
-      title: 'Todo 2', isCompleted: true
-    },
-    {
-      title: 'Todo 3', isCompleted: false
-    },
-    {
-      title: 'Todo 4', isCompleted: true
-    },
+  todos: Todo[] = [];
 
-  ];
-
-
-
-  markAllAsNotCompleted(): void {
-    this.todos = this.todos.map(todo => ({title: todo.title, isCompleted: true}));
-  }
-
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.todoService.getTodos().then(todos => this.todos = todos);
+  }
 
+  markAllAsNotCompleted(): void {
+    this.todos = this.todos.map(todo => ({ title: todo.title, isCompleted: true }));
   }
 
   handleStateChange(todo: Todo): void {
     todo.isCompleted = !todo.isCompleted;
- 
   }
 }
