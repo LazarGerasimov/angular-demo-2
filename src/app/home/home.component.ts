@@ -17,13 +17,13 @@ export class HomeComponent implements OnInit {
       title: 'Todo 1', isCompleted: false
     },
     {
-      title: 'Todo 2', isCompleted: false
+      title: 'Todo 2', isCompleted: true
     },
     {
       title: 'Todo 3', isCompleted: false
     },
     {
-      title: 'Todo 4', isCompleted: false
+      title: 'Todo 4', isCompleted: true
     },
     
   ]
