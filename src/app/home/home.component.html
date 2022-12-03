@@ -2,11 +2,8 @@
 <button (click)="markAllAsNotCompleted()">Mark All As Not Completed</button>
 
 <div *ngFor="let todo of todos">
-    <span>
-        {{todo.title}}
-    </span>
+    <app-todo-item >
 
-    <button (click)="handleCompleteStateChange(todo)">
-        {{todo.isCompleted ? 'Mark as not completed' : 'Mark as completed'}}
-    </button>
+    </app-todo-item>
+    
 </div>
